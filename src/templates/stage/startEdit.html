@@ -1,0 +1,125 @@
+<!-- 
+    Copyright 2014 Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+        http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License. 
+-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget">
+            <div class="widget-body">
+                <form id="stage-form" class="form-horizontal" role="form">
+                    <fieldset>
+                        <legend><strong>Start Pipeline</strong></legend>
+                        <div class="widget-controls">
+                            <a data-widgster="fullscreen" title="" href="#" data-original-title="Full Screen" style="display: inline;"><i class="glyphicon glyphicon-fullscreen"></i></a>
+                            <a data-widgster="restore" title="" href="#" style="display: none;" data-original-title="Restore"><i class="glyphicon glyphicon-resize-small"></i></a>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="row col-md-6">
+                                <label class="col-md-4 control-label" for="pp-url">Pipeline URL</label>
+                                <div class="col-md-8">
+                                    <input id="pp-url"  class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row col-md-6">
+                                <label class="col-md-4 control-label" for="pp-token">Pipeline Token</label>
+                                <div class="col-md-8">
+                                    <input id="pp-token" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-12" style="margin-top:30px">
+                            <div class="row col-md-6">
+                                <label class="col-md-4 control-label" for="type-select">Select Type</label>
+                                <div class="col-md-8">
+                                    <select id="type-select" style="width:100%">
+                                        <option value="github">Github</option>
+                                        <!-- <option value="gitlab">Gitlab</option> -->
+                                        <option value="customize">Customize</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row col-md-6" id="event_select">
+                                <label class="col-md-4 control-label" for="event-select">Event</label>
+                                <div class="col-md-8">
+                                    <select id="event-select" style="width:100%">
+                                        <!-- <option value="commit_comment">Commit Comment</option> -->
+                                        <option value="Create">Create</option>
+                                        <option value="Delete">Delete</option>
+                                        <option value="Deployment">Deployment</option>
+                                        <option value="DeploymentStatus">Deployment Status</option>
+                                        <option value="Fork">Fork</option>
+                                        <option value="Gollum">Gollum</option>
+                                        <option value="IssueComment">Issue Comment</option>
+                                        <option value="Issues">Issues</option>
+                                        <option value="Member">Member</option>
+                                        <option value="PageBuild">Page Build</option>
+                                        <option value="Public">Public</option>
+                                        <option value="PullRequestReviewComment">Pull Request Review Comment</option>
+                                        <option value="PullRequestReview">Pull Request Review</option>
+                                        <option value="PullRequest">Pull Request</option>
+                                        <option value="Push">Push</option>
+                                        <option value="Repository">Repository</option>
+                                        <option value="Release">Release</option>
+                                        <option value="Status">Status</option>
+                                        <option value="TeamAdd">Team Add</option>
+                                        <option value="Watch">Watch</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-lg treeview col-md-10 col-md-offset-1" style="margin-top:30px">
+                            <div id="outputTreeViewer" class="col-md-12" style="height:400px"></div>
+                            <div id="outputTreeDesigner">
+                               <div class="clearfix">
+                                    <ul class="nav nav-tabs pull-xs-left" id="actionTabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="tree-edit-tab" data-toggle="tab" href="#tree_edit" role="tab" aria-controls="tree_edit" aria-expanded="false">Tree Edit</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="output-from-edit-tab" data-toggle="tab" href="#output_from_edit" role="tab" aria-controls="output_from_edit" aria-expanded="true">From Edit</a>
+                                        </li> 
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                   <div class="row tab-pane active" id="tree_edit" class="tab-pane" role="tabpanel" aria-labelledby="tree-edit-tab" aria-expanded="true">
+                                        <div class="col-md-12 import-div">
+                                            <h4 class="pr">Output Tree</h4>
+
+                                            <div id="outputTreeDiv" class="json-editor"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row tab-pane" id="output_from_edit" class="tab-pane" role="tabpanel" aria-labelledby="output-from-edit-tab" aria-expanded="false">
+                                        <div class="col-md-5">
+                                            <div id="outputCodeEditor" style="width: 100%;height:300px"></div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button id="outputFromJson" type="button" class="btn btn-warning col-md-12">
+                                                <i class="glyphicon glyphicon-triangle-right"></i>
+                                            </button>
+                                            <br/>
+                                            <button id="outputToJson" type="button" class="btn btn-warning col-md-12" style="margin-top:10px">
+                                                <i class="glyphicon glyphicon-triangle-left"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div id="outputTreeEditor" style="width: 100%;height:300px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>   
+            </div>
+        </section>
+    </div>
+</div>
